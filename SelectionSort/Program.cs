@@ -11,7 +11,8 @@ namespace SelectionSort
     {
 
         static int[] Numbers;
-        const int Length = 10000;
+        const int Length = 100000;
+        const bool Display = false;
 
         static void Main(string[] args)
         {
@@ -30,17 +31,32 @@ namespace SelectionSort
             sw.Restart();
             int[] selectionSort = SelectionSort();
             sw.Stop();
-            Console.WriteLine($"Selection Sort: {sw.ElapsedMilliseconds}");
+            Console.WriteLine($"Selection Sort: {sw.ElapsedMilliseconds} ms and {sw.ElapsedTicks} ticks");
 
             sw.Restart();
             int[] standardBubbleSort = StandardBubbleSort();
             sw.Stop();
-            Console.WriteLine($"Standard Bubble Sort: {sw.ElapsedMilliseconds}");
+            Console.WriteLine($"Standard Bubble Sort: {sw.ElapsedMilliseconds} ms and {sw.ElapsedTicks} ticks");
 
             sw.Restart();
             int[] insertionSort = InsertionSort();
             sw.Stop();
-            Console.WriteLine($"Insertion Sort: {sw.ElapsedMilliseconds}");
+            Console.WriteLine($"Insertion Sort: {sw.ElapsedMilliseconds} ms and {sw.ElapsedTicks} ticks");
+
+            if(Display)
+            {
+                Console.WriteLine("\n\nSelection Sort: ");
+                for (int i = 0; i < selectionSort.Length; i++)
+                    Console.Write($"{selectionSort[i]} ");
+
+                Console.WriteLine("\n\nStandard Bubble Sort: ");
+                for (int i = 0; i < standardBubbleSort.Length; i++)
+                    Console.Write($"{standardBubbleSort[i]} ");
+
+                Console.WriteLine("\n\nInsertion Sort: ");
+                for (int i = 0; i < insertionSort.Length; i++)
+                    Console.Write($"{insertionSort[i]} ");
+            }
 
             Console.ReadLine();
         }
